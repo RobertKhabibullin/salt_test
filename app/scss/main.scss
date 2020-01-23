@@ -114,6 +114,7 @@ img:not([width]):not([height]) {
 	flex-grow: 1;
 	flex-wrap: wrap;
 	justify-content: space-between;
+
 }
 
 .menu__item a {
@@ -129,16 +130,38 @@ img:not([width]):not([height]) {
 	position: relative;
 }
 
-.menu__item--active a::after,
+.menu__item--active a::after {
+	content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $accent;
+  border-radius: 15px;
+}
+
+.menu__item:not(.menu__item--active) a::after {
+	content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+	width: 0%;
+  height: 3px;
+  background-color: $accent;
+  border-radius: 15px;
+}
+
 .menu__item:hover a::after {
 	content: "";
   position: absolute;
-  right: 0;
   bottom: 0;
   left: 0;
+	width: 100%;
   height: 3px;
-  background: $accent;
+  background-color: $accent;
   border-radius: 15px;
+	transition: 1s ease;
 }
 
 @media (max-width: 800px) {
@@ -238,6 +261,7 @@ img:not([width]):not([height]) {
 		position: absolute;
 		width: 100%;
 		top: 0;
+		left: 0;
 		background-color: #fff;
 		z-index: 10;
 	}
@@ -300,6 +324,20 @@ img:not([width]):not([height]) {
 	padding: 0;
 	margin: 0 0 0 auto;
 	list-style-type: none;
+}
+
+.fade {
+	animation-name: fade;
+	animation-duration: 2s;
+}
+
+@keyframes fade {
+	from {
+		opacity: .4;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .slider__item {
