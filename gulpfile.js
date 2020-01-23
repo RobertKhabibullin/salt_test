@@ -1,6 +1,6 @@
 var syntax         = 'scss', // Syntax: sass or scss;
 		gulpVersion    = '4'; // Gulp version: 3 or 4
-		gmWatch        = false; // ON/OFF GraphicsMagick watching "img/_src" folder (true/false). Linux install gm: sudo apt update; sudo apt install graphicsmagick
+		gmWatch        = false; // ON/OFF GraphicsMagick watching "img/src" folder (true/false). Linux install gm: sudo apt update; sudo apt install graphicsmagick
 
 var gulp          = require('gulp'),
 		gutil         = require('gulp-util' ),
@@ -78,13 +78,13 @@ gulp.task('rsync', function() {
 
 // Images @x1 & @x2 + Compression | Required graphicsmagick (sudo apt update; sudo apt install graphicsmagick)
 gulp.task('img1x', function() {
-	return gulp.src('app/img/_src/**/*.*')
+	return gulp.src('app/img/src/**/*.*')
 	.pipe(imageResize({ width: '50%' }))
 	.pipe(imagemin())
 	.pipe(gulp.dest('app/img/@1x/'))
 });
 gulp.task('img2x', function() {
-	return gulp.src('app/img/_src/**/*.*')
+	return gulp.src('app/img/src/**/*.*')
 	.pipe(imageResize({ width: '100%' }))
 	.pipe(imagemin())
 	.pipe(gulp.dest('app/img/@2x/'))
@@ -108,7 +108,7 @@ if (gulpVersion == 3) {
 		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
 		gulp.watch('app/*.html', ['code']);
-		gmWatch && gulp.watch('app/img/_src/**/*', ['img']);
+		gmWatch && gulp.watch('app/img/src/**/*', ['img']);
 	});
 	gulp.task('default', ['watch']);
 
@@ -124,7 +124,7 @@ if (gulpVersion == 4) {
 		gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
 		gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('scripts'));
 		gulp.watch('app/*.html', gulp.parallel('code'));
-		gmWatch && gulp.watch('app/img/_src/**/*', gulp.parallel('img')); // GraphicsMagick watching image sources if allowed.
+		gmWatch && gulp.watch('app/img/src/**/*', gulp.parallel('img')); // GraphicsMagick watching image sources if allowed.
 	});
 	gmWatch ? gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'browser-sync', 'watch')) 
 					: gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
