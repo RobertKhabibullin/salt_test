@@ -114,7 +114,6 @@ img:not([width]):not([height]) {
 	flex-grow: 1;
 	flex-wrap: wrap;
 	justify-content: space-between;
-
 }
 
 .menu__item a {
@@ -227,7 +226,7 @@ img:not([width]):not([height]) {
 
 	.menu--opened .menu__toggle {
 		width: 30px;
-		z-index: 20;
+		z-index: 120;
 		&::before,
 		&::after {
 			content: "";
@@ -261,9 +260,9 @@ img:not([width]):not([height]) {
 		position: absolute;
 		width: 100%;
 		top: 0;
-		left: 0;
 		background-color: #fff;
-		z-index: 10;
+		z-index: 110;
+		transition: background-color .5s;
 	}
 
 	.menu__item {
@@ -326,28 +325,18 @@ img:not([width]):not([height]) {
 	list-style-type: none;
 }
 
-.fade {
-	animation-name: fade;
-	animation-duration: 2s;
-}
-
-@keyframes fade {
-	from {
-		opacity: .4;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
 .slider__item {
 	overflow: hidden;
 	padding: 0;
 	margin: 0;
 	list-style-type: none;
 	display: flex;
-	justify-content: space-around;	
+	justify-content: center;	
 	flex-wrap: wrap;
+	transition: opacity 5s;
+}
+.owl-nav {
+	display: none;
 }
 
 .slider__content {
@@ -378,12 +367,16 @@ img:not([width]):not([height]) {
 	max-width: 500px;
 	height: 121px;
 	padding: 0;
-	margin: 70px 0 0 0;
+	margin: 70px 50px 0 0;
 }
 
 .slider__toggles {
-	padding: 0;
-	margin: 80px 0 0 auto;
+	position: absolute;
+	top: 43%;
+	right: 4%;
+	padding: 10px;
+	z-index: 100;
+	margin: 0;
 	display: flex;
 	flex-direction: column;
 }
@@ -395,22 +388,26 @@ img:not([width]):not([height]) {
 	cursor: pointer;
 }
 
-.slider__toggle:hover:not(.slider__toggle--active) polygon {
+.slider__toggle:hover:not(.active) polygon {
 	fill: #fff;
 	stroke: #fff;
 }
 
 .slider__toggle:active polygon,
-.slider__toggle--active polygon {
+.active polygon {
 	fill: $accent;
 	stroke: $accent;
 }
 
+.slider--nojs.slider__item {
+	display: none;
+}
 .slider--nojs.slider__items {
 	margin: 0 auto;
 }
-
-.slider--nojs.slider__item,
+.slider--nojs.owl-carousel {
+	display: block;
+}
 .slider--nojs.slider__toggles {
 	display: none;
 }
@@ -456,6 +453,7 @@ img:not([width]):not([height]) {
 	}
 
 	.slider__toggles {
+		position: static;
 		flex-direction: row;
 		padding-top: 30px;
 		margin: 0;

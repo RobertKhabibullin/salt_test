@@ -3,7 +3,7 @@
 <p>Исполнитель: <a href="https://vk.com/id186214781" target="_blank">Robert Khabibullin</a></p>
 <p>Готовый проект: <a href="https://robertkhabibullin.github.io/salt_test/app/" target="_blank">посмотреть сайт</a></p>
 
-<p>При верстке макета использовался плагин Magnific Popup для отображения видео.</p>
+<p>При верстке макета использовался плагин Magnific Popup для отображения видео и Owl Carousel 2 для слайдера.</p>
 
 <p>При написании кода использовалась одна из модификации БЭМ, также соблюдена семантика кода.</p>
 
