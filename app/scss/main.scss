@@ -205,9 +205,9 @@ img:not([width]):not([height]) {
 	.menu__items--block {
 		height: 100%;
 		opacity: 1;
-		transition: all 1s;
+		transition: opacity 1s;
 	}
-
+	
 	.menu__item--active a {
 		display: inline;
 		padding-bottom: 8px;
