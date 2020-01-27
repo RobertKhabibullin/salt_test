@@ -1,3 +1,4 @@
+// если не работает js, оставит один первый слайд
 document.querySelector('.slider__items').classList.remove('slider--nojs');
 var ite = document.querySelectorAll('.slider__item');
 for (var i = 0; i < ite.length; i++) {
@@ -5,29 +6,15 @@ for (var i = 0; i < ite.length; i++) {
 }
 document.querySelector('.slider__toggles').classList.remove('slider--nojs');
 
-//menu 
-
-var navHead = document.querySelector('.menu');
-var navMain = document.querySelector('.menu__wrap');
-var navToggle = document.querySelector('.menu__toggle');
-
-navHead.classList.remove('menu--nojs');
-navMain.classList.remove('menu--nojs');
-
-navToggle.addEventListener('click', function () {
-	if (navMain.classList.contains('menu--closed')) {
-		navMain.classList.remove('menu--closed');
-		navMain.classList.add('menu--opened');
-	} else {
-		navMain.classList.add('menu--closed');
-		navMain.classList.remove('menu--opened');
-	}
-});
-
 $(document).ready(function() {
 
-	//smoothscroll
+	//menu
+	$('.menu__toggle--wrap').on('click',function(){
+    $(this).find('.menu__toggle').toggleClass('open');
+    $('.menu__items').toggleClass('menu__items--block');
+  });
 
+	//smoothscroll
 	$('.smoothscroll').on('click', function(e){
 		e.preventDefault();
 		var anchor = $('#smoth');
@@ -37,7 +24,6 @@ $(document).ready(function() {
 	});
 
 	//magnificPopup
-
 	$('.popup-youtube').magnificPopup({
 		type: 'iframe',
 		mainClass: 'mfp-fade',
@@ -53,9 +39,9 @@ $(document).ready(function() {
 	});
 
 	//slider
-
-	$(".owl-carousel").owlCarousel({
-		loop: true, 
+	$('.owl-carousel').owlCarousel({
+		loop: false, 
+		margin:10,
 		items: 1,
 		smartSpeed: 1000,
 		dots: true,
@@ -64,8 +50,5 @@ $(document).ready(function() {
 	$('.slider__toggle').click(function(){
 	 $('.owl-carousel').trigger('to.owl.carousel', [$(this).index(), 300]);  
 	});
+
 });
-
-
-
-
