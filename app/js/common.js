@@ -1,12 +1,9 @@
-// если не работает js, оставит один первый слайд
-document.querySelector('.slider__items').classList.remove('slider--nojs');
-var ite = document.querySelectorAll('.slider__item');
-for (var i = 0; i < ite.length; i++) {
-  ite[i].classList.remove('slider--nojs');
-}
-document.querySelector('.slider__toggles').classList.remove('slider--nojs');
-
 $(document).ready(function() {
+
+	// если не работает js, оставит один первый слайд
+	$('.slider__items').removeClass('slider--nojs');
+	$('.slider__item').removeClass('slider--nojs');
+	$('.slider__toggles').removeClass('slider--nojs');
 
 	//menu
 	$('.menu__toggle--wrap').on('click',function(){
@@ -45,10 +42,10 @@ $(document).ready(function() {
 		items: 1,
 		smartSpeed: 1000,
 		dots: true,
-		dotsContainer: '.slider__toggles',
+		dotsContainer: '.slider__toggle',
 	});
 	$('.slider__toggle').click(function(){
-	 $('.owl-carousel').trigger('to.owl.carousel', [$(this).index(), 300]);  
+		$('.owl-carousel').trigger('to.owl.carousel', [$(this).index(), 300]);
 	});
 
 });
